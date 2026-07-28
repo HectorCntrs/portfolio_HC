@@ -2,7 +2,7 @@
 
 Personal portfolio built with Angular, showcasing backend and full-stack projects, professional experience, and technical skills. Designed with a precision-instrument / blueprint aesthetic to match a systems-engineering identity.
 
-**Live site:** [add your deployed URL here]
+**Live site:** https://portfolio-hector-contreras.netlify.app/
 
 ![Angular](https://img.shields.io/badge/Angular-19-DD0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
