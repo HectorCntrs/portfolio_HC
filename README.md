@@ -1,63 +1,92 @@
-<<<<<<< HEAD
-# PortfolioHC
+# Héctor Salvador — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+Personal portfolio built with Angular, showcasing backend and full-stack projects, professional experience, and technical skills. Designed with a precision-instrument / blueprint aesthetic to match a systems-engineering identity.
 
-## Development server
+**Live site:** [add your deployed URL here]
 
-To start a local development server, run:
+![Angular](https://img.shields.io/badge/Angular-19-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-8B94A0)
+
+---
+
+## Overview
+
+This is a single-page application built with standalone Angular components, covering:
+
+- **Home** — hero introduction with role, availability status, and quick links
+- **About** — background, education, and working philosophy
+- **Skills** — technical stack grouped by category, plus certifications
+- **Experience** — professional history with image carousels per role
+- **Projects** — featured work with live demo / source links and screenshot galleries
+- **Contact** — direct contact details and a message form
+
+## Tech stack
+
+- **Framework:** Angular 19 (standalone components, `@for`/`@if` control flow)
+- **Language:** TypeScript
+- **Styling:** Plain CSS (component-scoped), custom design system (no UI framework)
+- **Fonts:** Space Grotesk, IBM Plex Sans, IBM Plex Mono
+
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 18+
+- [Angular CLI](https://angular.dev/tools/cli) (`npm install -g @angular/cli`)
+
+### Installation
+
+```bash
+git clone https://github.com/HectorCntrs/portfolio_HC.git
+cd portfolio_HC
+npm install
+```
+
+### Development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/`. The app reloads automatically on file changes.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Build
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are output to `dist/`.
 
-## Running unit tests
+## Project structure
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── navbar/
+│   │   ├── home/
+│   │   ├── about/
+│   │   ├── skills/
+│   │   ├── experience/
+│   │   ├── projects/
+│   │   ├── contact/
+│   │   └── footer/
+│   ├── app.component.ts
+│   └── app.routes.ts
+├── assets/
+│   ├── experience/
+│   └── projects/
+└── styles.css
 ```
 
-## Running end-to-end tests
+## Contact
 
-For end-to-end (e2e) testing, run:
+- **Email:** hector12ca.dev@gmail.com
+- **LinkedIn:** [linkedin.com/in/hector-salvador-contreras-álvarez](https://www.linkedin.com/in/hector-salvador-contreras-álvarez-768285363)
+- **GitHub:** [github.com/HectorCntrs](https://github.com/HectorCntrs)
 
-```bash
-ng e2e
-```
+## License
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# portfolio_HC
->>>>>>> 1aa7638cf2388c4cc9e732ddcac5fd86d71713d9
+This project is licensed under the MIT License — feel free to use it as a reference for your own portfolio, but please don't republish the content or images as your own.
