@@ -1,0 +1,163 @@
+<section id="experience" class="experience-section">
+  <div class="experience-container">
+    <header class="experience-header">
+      <h2>Professional Experience</h2>
+      <span></span>
+    </header>
+
+    <div class="experience-list">
+      @for (
+        experience of experiences;
+        track experience.company;
+        let experienceIndex = $index
+      ) {
+        <article class="experience-item">
+          <aside class="experience-meta">
+            <span class="experience-period">
+              {{ experience.period }}
+            </span>
+
+            <h3>{{ experience.company }}</h3>
+
+            <p>{{ experience.role }}</p>
+          </aside>
+
+          <div class="experience-card">
+            <div class="experience-carousel">
+              <img
+                class="experience-image"
+                [src]="
+                  experience.images[currentImageIndexes[experienceIndex]].src
+                "
+                [alt]="
+                  experience.images[currentImageIndexes[experienceIndex]].alt
+                "
+                (click)="
+                  openImage(
+                    experience.images[currentImageIndexes[experienceIndex]]
+                  )
+                "
+              />
+
+              @if (experience.images.length > 1) {
+                <button
+                  type="button"
+                  class="carousel-arrow carousel-arrow--previous"
+                  aria-label="Ver imagen anterior"
+                  (click)="previousImage(experienceIndex)"
+                >
+                  &#10094;
+                </button>
+
+                <button
+                  type="button"
+                  class="carousel-arrow carousel-arrow--next"
+                  aria-label="Ver imagen siguiente"
+                  (click)="nextImage(experienceIndex)"
+                >
+                  &#10095;
+                </button>
+
+                <div class="carousel-indicators">
+                  @for (
+                    image of experience.images;
+                    track image.src;
+                    let imageIndex = $index
+                  ) {
+                    <button
+                      type="button"
+                      class="carousel-indicator"
+                      [class.carousel-indicator--active]="
+                        currentImageIndexes[experienceIndex] === imageIndex
+                      "
+                      [attr.aria-label]="'Ver imagen ' + (imageIndex + 1)"
+                      [attr.aria-current]="
+                        currentImageIndexes[experienceIndex] === imageIndex
+                          ? 'true'
+                          : null
+                      "
+                      (click)="selectImage(experienceIndex, imageIndex)"
+                    ></button>
+                  }
+                </div>
+
+                <span class="carousel-counter">
+                  {{ currentImageIndexes[experienceIndex] + 1 }}
+                  /
+                  {{ experience.images.length }}
+                </span>
+              }
+            </div>
+
+            <p class="context">
+              {{ experience.context }}
+            </p>
+
+            @if (experience.demoUrl || experience.repositoryUrl) {
+              <div class="experience-links">
+                @if (experience.demoUrl) {
+                  <a
+                    class="experience-link"
+                    [href]="experience.demoUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View demo
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                }
+
+                @if (experience.repositoryUrl) {
+                  <a
+                    class="experience-link experience-link--secondary"
+                    [href]="experience.repositoryUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ver código
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                }
+              </div>
+            }
+
+            <ul>
+              @for (achievement of experience.achievements; track achievement) {
+                <li>
+                  <span class="achievement-icon">⊙</span>
+                  <span>{{ achievement }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+@if (selectedImage) {
+  <div
+    class="image-lightbox"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="selectedImage.alt"
+    (click)="closeImage()"
+  >
+    <button
+      type="button"
+      class="lightbox-close"
+      aria-label="Cerrar imagen"
+      (click)="closeImage()"
+    >
+      ×
+    </button>
+
+    <img
+      class="lightbox-image"
+      [src]="selectedImage.src"
+      [alt]="selectedImage.alt"
+      (click)="$event.stopPropagation()"
+    />
+  </div>
+}

@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <strong>HÉCTOR CONTRERAS</strong>
+
+      <p>This website was developed using the Angular Framework</p>
+    </div>
+    <nav class="footer-links" aria-label="Social media">
+      @for (social of socialLinks; track social.label) {
+        <a [href]="social.url" target="_blank" rel="noopener noreferrer">
+          {{ social.label }}
+        </a>
+      }
+    </nav>
+  </div>
+</footer>

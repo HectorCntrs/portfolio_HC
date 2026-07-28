@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.placeholder-section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 100px 24px;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: var(--header-height);
+}
+
+.placeholder-section:nth-child(odd) {
+  background: var(--background-soft);
+}
+
+.placeholder-section h2 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 60px);
+}

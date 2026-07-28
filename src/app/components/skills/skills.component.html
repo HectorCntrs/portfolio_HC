@@ -1,0 +1,75 @@
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+    <div class="skills-panel">
+      <h2>Technical Expertise</h2>
+
+      <div class="skills-columns">
+        <div class="skills-column">
+          @for (group of leftSkillGroups; track group.title) {
+            <article class="skill-group">
+              <h3>{{ group.title }}</h3>
+
+              <div class="skill-tags">
+                @for (skill of group.skills; track skill) {
+                  <span>{{ skill }}</span>
+                }
+              </div>
+            </article>
+          }
+        </div>
+
+        <div class="skills-column">
+          @for (group of rightSkillGroups; track group.title) {
+            <article class="skill-group">
+              <h3>{{ group.title }}</h3>
+
+              <div class="skill-tags">
+                @for (skill of group.skills; track skill) {
+                  <span>{{ skill }}</span>
+                }
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="certifications-panel">
+      <h2>Certifications</h2>
+
+      <div class="certifications-list">
+        @for (certification of certifications; track certification.title) {
+          <article class="certification-card">
+            <div class="certification-icon">
+              {{ certification.icon }}
+            </div>
+
+            <div class="certification-info">
+              <h3>{{ certification.title }}</h3>
+
+              <p>
+                {{ certification.organization }}
+
+                @if (certification.year) {
+                  <span>•</span>
+                  {{ certification.year }}
+                }
+              </p>
+
+              @if (certification.verificationUrl) {
+                <a
+                  class="verification-link"
+                  [href]="certification.verificationUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Verify credential ↗
+                </a>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>

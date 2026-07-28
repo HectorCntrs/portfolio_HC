@@ -1,0 +1,45 @@
+<header class="navbar">
+  <div class="navbar__content">
+    <button
+      type="button"
+      class="brand"
+      aria-label="Ir al inicio"
+      (click)="scrollTo('home')"
+    >
+      <span class="brand__icon">&gt;_</span>
+      <span>HÉCTOR CONTRERAS</span>
+    </button>
+
+    <button
+      type="button"
+      class="menu-button"
+      aria-label="Abrir menú"
+      [attr.aria-expanded]="menuOpen"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="nav-links"
+      aria-label="Navegación principal"
+      [class.nav-links--open]="menuOpen"
+    >
+      <button
+        *ngFor="let item of navItems"
+        type="button"
+        class="nav-link"
+        [class.nav-link--active]="activeSection === item.id"
+        (click)="scrollTo(item.id)"
+      >
+        {{ item.label }}
+      </button>
+    </nav>
+
+    <button type="button" class="navbar__cta" (click)="scrollTo('projects')">
+      View Projects
+    </button>
+  </div>
+</header>

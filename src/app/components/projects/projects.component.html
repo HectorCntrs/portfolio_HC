@@ -1,0 +1,159 @@
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+    <header class="projects-header">
+      <div>
+        <span class="section-label">PORTFOLIO</span>
+        <h2>Featured Projects</h2>
+      </div>
+
+      <p>
+        A selection of architectural solutions from backend services to
+        full-stack applications delivered to real clients.
+      </p>
+    </header>
+
+    <div class="projects-grid">
+      @for (
+        project of projects;
+        track project.title;
+        let projectIndex = $index
+      ) {
+        <article class="project-card">
+          <div class="project-image project-carousel">
+            <img
+              class="project-carousel__image"
+              [src]="project.images[currentImageIndexes[projectIndex]].src"
+              [alt]="project.images[currentImageIndexes[projectIndex]].alt"
+              (click)="
+                openImage(project.images[currentImageIndexes[projectIndex]])
+              "
+            />
+
+            @if (project.images.length > 1) {
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow--previous"
+                aria-label="Ver imagen anterior"
+                (click)="previousImage(projectIndex)"
+              >
+                &#10094;
+              </button>
+
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow--next"
+                aria-label="Ver imagen siguiente"
+                (click)="nextImage(projectIndex)"
+              >
+                &#10095;
+              </button>
+
+              <div class="carousel-indicators">
+                @for (
+                  image of project.images;
+                  track image.src;
+                  let imageIndex = $index
+                ) {
+                  <button
+                    type="button"
+                    class="carousel-indicator"
+                    [class.carousel-indicator--active]="
+                      currentImageIndexes[projectIndex] === imageIndex
+                    "
+                    [attr.aria-label]="'Ver imagen ' + (imageIndex + 1)"
+                    [attr.aria-current]="
+                      currentImageIndexes[projectIndex] === imageIndex
+                        ? 'true'
+                        : null
+                    "
+                    (click)="selectImage(projectIndex, imageIndex)"
+                  ></button>
+                }
+              </div>
+
+              <span class="carousel-counter">
+                {{ currentImageIndexes[projectIndex] + 1 }}
+                /
+                {{ project.images.length }}
+              </span>
+            }
+
+            <div class="project-tags">
+              @for (technology of project.technologies; track technology) {
+                <span>{{ technology }}</span>
+              }
+            </div>
+          </div>
+
+          <div class="project-content">
+            <h3>{{ project.title }}</h3>
+
+            <ul class="project-bullets">
+              @for (bullet of project.bullets; track bullet) {
+                <li>
+                  <span class="bullet-icon" aria-hidden="true">⊙</span>
+                  <span>{{ bullet }}</span>
+                </li>
+              }
+            </ul>
+
+            <div class="project-footer">
+              <div class="project-links">
+                @if (project.demoUrl) {
+                  <a
+                    [href]="project.demoUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live Demo ↗
+                  </a>
+                }
+
+                @if (project.sourceUrl) {
+                  <a
+                    [href]="project.sourceUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Source Code ↗
+                  </a>
+                }
+              </div>
+
+              <span class="project-icon" aria-hidden="true">
+                {{ project.icon }}
+              </span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+@if (selectedImage) {
+  <div
+    class="image-lightbox"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="selectedImage.alt"
+    (click)="closeImage()"
+  >
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button
+        type="button"
+        class="lightbox-close"
+        aria-label="Cerrar imagen"
+        (click)="closeImage()"
+      >
+        ×
+      </button>
+
+      <img
+        class="lightbox-image"
+        [src]="selectedImage.src"
+        [alt]="selectedImage.alt"
+      />
+    </div>
+  </div>
+}
